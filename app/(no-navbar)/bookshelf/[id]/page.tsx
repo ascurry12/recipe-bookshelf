@@ -31,7 +31,7 @@ export default async function Bookshelf({ params }: PageProps) {
           ></label>
           <ul className="menu bg-base-300 min-h-full w-80 p-4">
             <div className="flex items-center">
-              <Link href={"/"} className="mr-6">
+              <Link href={"/"} className="hover:bg-black/10 rounded-full mr-6">
                 <img
                   src="/images/circle-arrow-left-solid-full.svg"
                   className="w-10"
@@ -61,7 +61,7 @@ export default async function Bookshelf({ params }: PageProps) {
               </div>
               <div className="items-center text-center">
                 <img src="/images/star-solid-full.svg" className="w-10 mx-auto"></img>
-                <h2 className="text-lg">4.32</h2>
+                <h2 className="text-lg">0</h2>
                 <h2 className="text-lg">Rating Avg.</h2>
               </div>
             </div>
