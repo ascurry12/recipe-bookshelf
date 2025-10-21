@@ -7,7 +7,7 @@ import { createClient } from "@/utils/supabase/server";
 import { PostgrestResponse } from "@supabase/supabase-js";
 
 export async function addBook(formData: FormData) {
-  const bookshelf = getUserBookshelf();
+  const bookshelf = await getUserBookshelf();
 
   const supabase = await createClient();
   const data = {
@@ -30,6 +30,15 @@ export async function editBook(
 ) {}
 
 export async function deleteBook(book: PostgrestResponse<any>) {}
+
+export async function getUserBooks() {
+  const supabase = await createClient();
+  const bookshelf = await getUserBookshelf();
+
+  const books = supabase.from("books").select().eq("bookshelf_id", bookshelf.data.id);
+  
+  return books;
+}
 
 export async function getUserBookshelf() {
   const supabase = await createClient();

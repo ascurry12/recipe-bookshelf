@@ -1,5 +1,5 @@
 import React from "react";
-import { getUserInfo, getUserBookshelf, addBook } from "./actions";
+import { getUserInfo, getUserBookshelf, getUserBooks, addBook } from "./actions";
 import AddBookButton from "@/components/addBookButton";
 import Link from "next/link";
 import Book from "@/components/book";
@@ -14,7 +14,10 @@ export default async function Bookshelf({ params }: PageProps) {
   const { id } = await params;
   const userInfo = await getUserInfo();
   const bookshelfInfo = await getUserBookshelf();
-  // const bookshelfBooks = await getUserBooks();
+  const bookshelfBooks = await getUserBooks();
+
+  console.log(bookshelfBooks.data?.length)
+
   return (
     <>
       <div className="drawer lg:drawer-open">
@@ -83,7 +86,7 @@ export default async function Bookshelf({ params }: PageProps) {
                   src="/images/book-solid-full.svg"
                   className="w-10 mx-auto"
                 ></img>
-                <h2 className="text-lg">0</h2>
+                <h2 className="text-lg">{bookshelfBooks.data ? bookshelfBooks.data?.length : 0}</h2>
                 <h2 className="text-lg">Books</h2>
               </div>
               <div className="items-center text-center">
