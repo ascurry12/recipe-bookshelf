@@ -3,8 +3,8 @@ import { signup } from "./actions";
 
 export default function Signup() {
   return (
-    <form method="post">
-      <fieldset className="fieldset bg-base-100 border-base-200 rounded-box w-xs border p-4">
+    <form method="post" className="mt-10 ">
+      <fieldset className="fieldset bg-base-100 border-base-200 rounded-box w-xs border p-4 m-auto">
         <legend className="fieldset-legend">Sign Up</legend>
 
         <label htmlFor="display-name" className="label">Display Name</label>
