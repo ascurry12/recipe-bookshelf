@@ -18,17 +18,28 @@ export default async function Home() {
         <div className="hero-overlay"></div>
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">
-              Build your personal recipe bookshelf
-            </h1>
-            <p className="mb-5">
-              Create an account to begin your archival cooking journey
-            </p>
             {!user ? (
-              <Link href="/signup" className="btn btn-primary">
-                Get Started
-              </Link>
-            ) : null}
+              <>
+                <h1 className="mb-5 text-5xl font-bold">
+                  Build your personal recipe bookshelf
+                </h1>
+                <p className="mb-5">
+                  Create an account to begin your archival cooking journey
+                </p>
+                <Link href="/signup" className="btn btn-primary">
+                  Get Started
+                </Link>
+              </>
+            ) : (
+              <>
+                <h1 className="mb-5 text-5xl font-bold">
+                  Welcome back, {user.user_metadata.display_name ? user.user_metadata.display_name : "Chef"}
+                </h1>
+                <p className="mb-5">
+                  Continue your archival cooking journey now
+                </p>
+              </>
+            )}
           </div>
         </div>
       </div>

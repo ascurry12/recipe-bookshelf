@@ -2,7 +2,7 @@
 
 import React, { ReactNode } from "react";
 
-export default async function AddBookButton() {
+export default function AddBookButton() {
   return (
     <button
       className="w-fit btn btn-secondary"

@@ -47,7 +47,7 @@ export default async function Bookshelf({ params }: PageProps) {
             <input type="search" required placeholder="Search" />
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-5 mt-10">
-            <Book />
+            <Book /> {/* link = { book ? `/book/${book.id}`}*/}
             <Book />
             <Book />
             <Book />
@@ -57,7 +57,7 @@ export default async function Bookshelf({ params }: PageProps) {
             <Book />
           </div>
         </div>
-        <div className="drawer-side border-r-1">
+        <div className="drawer-side border-r-2 border-r-[#d3cccb]">
           <label
             htmlFor="my-drawer-3"
             aria-label="close sidebar"
@@ -83,7 +83,7 @@ export default async function Bookshelf({ params }: PageProps) {
             <div className="flex justify-evenly">
               <div className="items-center text-center">
                 <img
-                  src="/images/book-solid-full.svg"
+                  src="/images/icons/book-solid-full.svg"
                   className="w-10 mx-auto"
                 ></img>
                 <h2 className="text-lg">{bookshelfBooks.data ? bookshelfBooks.data?.length : 0}</h2>
