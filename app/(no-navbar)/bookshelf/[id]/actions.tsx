@@ -35,17 +35,66 @@ export async function addBook(formData: FormData) {
   redirect(`/bookshelf/${bookshelf.data.id}`);
 }
 
-export async function editBook(
-  formData: FormData,
-  book: PostgrestResponse<any>
-) {}
+export async function editBook(bookID: string, formData: FormData) {
+  const bookshelf = await getUserBookshelf();
 
-export async function deleteBook(book: PostgrestResponse<any>) {}
+  const supabase = await createClient();
+
+  const data = {
+    title: formData.get("title") as string,
+    color: formData.get("color") as string,
+    icon: formData.get("icon") as string,
+  };
+
+  // TO-DO: supabase edit logic
+  const { error } = await supabase
+    .from("books")
+    .update({
+      title: data.title,
+      color: data.color,
+      icon: data.icon,
+    })
+    .eq("id", bookID);
+
+  if (error) {
+    console.log(error);
+    redirect("/error");
+  }
+
+  revalidatePath(`/bookshelf/${bookshelf.data.id}`);
+
+  redirect(`/bookshelf/${bookshelf.data.id}`);
+}
+
+export async function deleteBook(bookID: string) {
+  const bookshelf = await getUserBookshelf();
+
+  const supabase = await createClient();
+
+  const { error } = await supabase.from("books").delete().eq("id", bookID);
+
+  if (error) {
+    console.log(error);
+    redirect("/error");
+  }
+
+  revalidatePath(`/bookshelf/${bookshelf.data.id}`);
+
+  redirect(`/bookshelf/${bookshelf.data.id}`);
+}
+
+export async function getBook(bookID: string) {
+  const supabase = await createClient();
+
+  const book = await supabase.from("books").select().eq("id", bookID).single();
+
+  return book;
+}
 
 export async function getUserBooks() {
   const supabase = await createClient();
   const bookshelf = await getUserBookshelf();
-  
+
   const books = await supabase
     .from("books")
     .select()

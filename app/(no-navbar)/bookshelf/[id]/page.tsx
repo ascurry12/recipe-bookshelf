@@ -54,7 +54,16 @@ export default async function Bookshelf({ params }: PageProps) {
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-5 mt-10">
             {bookshelfBooks.data?.map((book) => {
-              return (<Book key={book.id} color={book.color} title={book.title} icon={book.icon} link={`${bookshelfInfo.data.id}/book/${book.id}`}/>)
+              return (
+                <Book
+                  key={book.id}
+                  bookID={book.id}
+                  color={book.color}
+                  title={book.title}
+                  icon={book.icon}
+                  link={`${bookshelfInfo.data.id}/book/${book.id}`}
+                />
+              );
             })}
           </div>
         </div>
@@ -111,6 +120,7 @@ export default async function Bookshelf({ params }: PageProps) {
             </div>
           </ul>
 
+          {/* add book modal */}
           <dialog
             id="add_book_modal"
             className="modal modal-bottom sm:modal-middle"
@@ -142,7 +152,9 @@ export default async function Bookshelf({ params }: PageProps) {
                       name="color"
                       className="select"
                     >
-                      <option disabled={true} value="">Pick a color</option>
+                      <option disabled={true} value="">
+                        Pick a color
+                      </option>
                       <option value="default">Default</option>
                       <option value="red">Red</option>
                       <option value="orange">Orange</option>
@@ -152,6 +164,7 @@ export default async function Bookshelf({ params }: PageProps) {
                       <option value="indigo">Indigo</option>
                       <option value="violet">Violet</option>
                       <option value="turquoise">Turquoise</option>
+                      <option value="pink">Pink</option>
                     </select>
 
                     <label htmlFor="icon" className="label">
@@ -163,7 +176,9 @@ export default async function Bookshelf({ params }: PageProps) {
                       name="icon"
                       className="select"
                     >
-                      <option disabled={true} value="">Pick an icon</option>
+                      <option disabled={true} value="">
+                        Pick an icon
+                      </option>
                       <option value="book">Book</option>
                       <option value="cake">Cake</option>
                       <option value="carrot">Carrot</option>
@@ -177,7 +192,12 @@ export default async function Bookshelf({ params }: PageProps) {
                     </select>
                     {/* if there is a button in form, it will close the modal */}
                     <div className="flex items-center justify-evenly">
-                      <button className="btn btn-neutral mt-4" formMethod="dialog">Cancel</button>
+                      <button
+                        className="btn btn-neutral mt-4"
+                        formMethod="dialog"
+                      >
+                        Cancel
+                      </button>
                       <button
                         formAction={addBook}
                         className="btn btn-neutral mt-4"

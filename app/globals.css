@@ -33,6 +33,18 @@
   --color-error: oklch(65% 0.3 30);
   --color-error-content: oklch(98% 0.01 30);
 
+  /* book colors */
+
+  --color-book-default: #e7e2df;
+  --color-book-red: #ff6961;
+  --color-book-orange: #ffb480;
+  --color-book-yellow: #f8f38d;
+  --color-book-green: #42d6a4;
+  --color-book-blue: #59adf6;
+  --color-book-indigo: #9d94ff;
+  --color-book-violet: #c780e8;
+  --color-book-turquoise: #08cad1;
+
   /* border radius */
   --radius-selector: 1rem;
   --radius-field: 0.25rem;
