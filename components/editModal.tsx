@@ -10,8 +10,8 @@ interface Props {
   icon: string;
 }
 
-export default function EditModal({ bookID, title, color, icon}: Props) {
-    const editBookWithID = editBook.bind(null, bookID);
+export default function EditModal({ bookID, title, color, icon }: Props) {
+  const editBookWithID = editBook.bind(null, bookID);
   return (
     <dialog
       id={`edit_book_modal_${bookID}`}
@@ -45,16 +45,19 @@ export default function EditModal({ bookID, title, color, icon}: Props) {
                 <option disabled={true} value="">
                   Pick a color
                 </option>
-                <option value="default">Default</option>
-                <option value="red">Red</option>
-                <option value="orange">Orange</option>
-                <option value="yellow">Yellow</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-                <option value="indigo">Indigo</option>
-                <option value="violet">Violet</option>
-                <option value="turquoise">Turquoise</option>
-                <option value="pink">Pink</option>
+
+                <div className="max-h-60 overflow-y-auto">
+                  <option value="default">Default</option>
+                  <option value="red">Red</option>
+                  <option value="orange">Orange</option>
+                  <option value="yellow">Yellow</option>
+                  <option value="green">Green</option>
+                  <option value="blue">Blue</option>
+                  <option value="indigo">Indigo</option>
+                  <option value="violet">Violet</option>
+                  <option value="turquoise">Turquoise</option>
+                  <option value="pink">Pink</option>
+                </div>
               </select>
 
               <label htmlFor="icon" className="label">
@@ -69,23 +72,29 @@ export default function EditModal({ bookID, title, color, icon}: Props) {
                 <option disabled={true} value="">
                   Pick an icon
                 </option>
-                <option value="book">Book</option>
-                <option value="cake">Cake</option>
-                <option value="carrot">Carrot</option>
-                <option value="cat">Cat</option>
-                <option value="cheese">Cheese</option>
-                <option value="dog">Dog</option>
-                <option value="icecream">Ice Cream</option>
-                <option value="paw">Paw</option>
-                <option value="pizza">Pizza</option>
-                <option value="snowflake">Snowflake</option>
+
+                <div className="max-h-60 overflow-y-auto">
+                  <option value="book">Book</option>
+                  <option value="cake">Cake</option>
+                  <option value="carrot">Carrot</option>
+                  <option value="cat">Cat</option>
+                  <option value="cheese">Cheese</option>
+                  <option value="dog">Dog</option>
+                  <option value="icecream">Ice Cream</option>
+                  <option value="paw">Paw</option>
+                  <option value="pizza">Pizza</option>
+                  <option value="snowflake">Snowflake</option>
+                </div>
               </select>
               {/* if there is a button in form, it will close the modal */}
               <div className="flex items-center justify-evenly">
                 <button className="btn btn-neutral mt-4" formMethod="dialog">
                   Cancel
                 </button>
-                <button formAction={editBookWithID} className="btn btn-neutral mt-4">
+                <button
+                  formAction={editBookWithID}
+                  className="btn btn-secondary mt-4"
+                >
                   Edit Book
                 </button>
               </div>

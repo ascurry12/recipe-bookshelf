@@ -40,7 +40,7 @@ export default async function Book({
   };
 
   const colors: Options = {
-    default: "bg-primary-300",
+    default: "bg-stone-200",
     red: "bg-red-200",
     orange: "bg-orange-200",
     yellow: "bg-yellow-200",
@@ -51,6 +51,20 @@ export default async function Book({
     turquoise: "bg-teal-200",
     pink: "bg-pink-200",
   };
+
+  const colors_text: Options = {
+    default: "text-stone-600",
+    red: "text-red-600",
+    orange: "text-orange-600",
+    yellow: "text-yellow-600",
+    green: "text-green-600",
+    blue: "text-blue-600",
+    indigo: "text-indigo-600",
+    violet: "text-violet-600",
+    turquoise: "text-teal-600",
+    pink: "text-pink-600",
+  };
+
   return (
     <>
       <div
@@ -64,12 +78,12 @@ export default async function Book({
         </div>
         <Link href={link ? link : "/"}>
           <img src={icons[icon]} className="w-fit m-2"></img>
-          <p className="truncate text-sm text-center">{title}</p>
+          <p className={`truncate text-sm text-center ${colors_text[color]}`}>{title}</p>
         </Link>
       </div>
-      
-      <EditModal bookID={bookID} title={title} color={color} icon={icon}/>
-      <DeleteModal bookID={bookID} title={title}/>
+
+      <EditModal bookID={bookID} title={title} color={color} icon={icon} />
+      <DeleteModal bookID={bookID} title={title} />
     </>
   );
 }
