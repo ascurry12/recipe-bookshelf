@@ -5,6 +5,7 @@ import {
   getUserBooks,
   addBook,
 } from "./actions";
+import BookDisplay from "@/components/bookDisplay";
 import AddBookButton from "@/components/addBookButton";
 import Link from "next/link";
 import Book from "@/components/book";
@@ -21,6 +22,12 @@ export default async function Bookshelf({ params }: PageProps) {
   const bookshelfInfo = await getUserBookshelf();
   const bookshelfBooks = await getUserBooks();
 
+  const searchInput = "";
+  // const searchInput = document.getElementById('book-search');
+  const filtered = bookshelfBooks.data?.filter((book) =>
+    book.title.toLowerCase().includes(searchInput.toLowerCase())
+  );
+
   return (
     <>
       <div className="drawer lg:drawer-open">
@@ -33,39 +40,10 @@ export default async function Bookshelf({ params }: PageProps) {
           >
             Open drawer
           </label>
-          <label className="input">
-            <svg
-              className="h-[1em] opacity-50"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-            >
-              <g
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                strokeWidth="2.5"
-                fill="none"
-                stroke="currentColor"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.3-4.3"></path>
-              </g>
-            </svg>
-            <input type="search" required placeholder="Search" />
-          </label>
-          <div className="grid grid-cols-2 sm:grid-cols-5 mt-10">
-            {bookshelfBooks.data?.map((book) => {
-              return (
-                <Book
-                  key={book.id}
-                  bookID={book.id}
-                  color={book.color}
-                  title={book.title}
-                  icon={book.icon}
-                  link={`${bookshelfInfo.data.id}/book/${book.id}`}
-                />
-              );
-            })}
-          </div>
+          <BookDisplay
+            bookData={bookshelfBooks.data}
+            bookshelfData={bookshelfInfo}
+          />
         </div>
         <div className="drawer-side border-r-2 border-r-[#d3cccb]">
           <label
@@ -155,7 +133,7 @@ export default async function Bookshelf({ params }: PageProps) {
                       <option disabled={true} value="">
                         Pick a color
                       </option>
-                      <div className="max-h-60 overflow-y-auto">
+                      <optgroup className="max-h-60 overflow-y-auto">
                         <option value="default">Default</option>
                         <option value="red">Red</option>
                         <option value="orange">Orange</option>
@@ -166,7 +144,7 @@ export default async function Bookshelf({ params }: PageProps) {
                         <option value="violet">Violet</option>
                         <option value="turquoise">Turquoise</option>
                         <option value="pink">Pink</option>
-                      </div>
+                      </optgroup>
                     </select>
 
                     <label htmlFor="icon" className="label">
@@ -181,7 +159,7 @@ export default async function Bookshelf({ params }: PageProps) {
                       <option disabled={true} value="">
                         Pick an icon
                       </option>
-                      <div className="max-h-60 overflow-y-auto">
+                      <optgroup className="max-h-60 overflow-y-auto">
                         <option value="book">Book</option>
                         <option value="cake">Cake</option>
                         <option value="carrot">Carrot</option>
@@ -192,7 +170,7 @@ export default async function Bookshelf({ params }: PageProps) {
                         <option value="paw">Paw</option>
                         <option value="pizza">Pizza</option>
                         <option value="snowflake">Snowflake</option>
-                      </div>
+                      </optgroup>
                     </select>
                     {/* if there is a button in form, it will close the modal */}
                     <div className="flex items-center justify-evenly">

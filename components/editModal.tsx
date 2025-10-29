@@ -45,8 +45,7 @@ export default function EditModal({ bookID, title, color, icon }: Props) {
                 <option disabled={true} value="">
                   Pick a color
                 </option>
-
-                <div className="max-h-60 overflow-y-auto">
+                <optgroup className="max-h-60 overflow-y-auto">
                   <option value="default">Default</option>
                   <option value="red">Red</option>
                   <option value="orange">Orange</option>
@@ -57,7 +56,7 @@ export default function EditModal({ bookID, title, color, icon }: Props) {
                   <option value="violet">Violet</option>
                   <option value="turquoise">Turquoise</option>
                   <option value="pink">Pink</option>
-                </div>
+               </optgroup>
               </select>
 
               <label htmlFor="icon" className="label">
@@ -73,7 +72,7 @@ export default function EditModal({ bookID, title, color, icon }: Props) {
                   Pick an icon
                 </option>
 
-                <div className="max-h-60 overflow-y-auto">
+                <optgroup className="max-h-60 overflow-y-auto">
                   <option value="book">Book</option>
                   <option value="cake">Cake</option>
                   <option value="carrot">Carrot</option>
@@ -84,7 +83,7 @@ export default function EditModal({ bookID, title, color, icon }: Props) {
                   <option value="paw">Paw</option>
                   <option value="pizza">Pizza</option>
                   <option value="snowflake">Snowflake</option>
-                </div>
+                </optgroup>
               </select>
               {/* if there is a button in form, it will close the modal */}
               <div className="flex items-center justify-evenly">

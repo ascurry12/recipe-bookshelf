@@ -17,7 +17,7 @@ type Options = {
   [key: string]: string;
 };
 
-export default async function Book({
+export default function Book({
   color,
   title,
   icon,
@@ -68,7 +68,7 @@ export default async function Book({
   return (
     <>
       <div
-        className={`group w-30 ${colors[color]} mx-5 mb-5 p-5 rounded-r-lg rounded-l-xs relative`}
+        className={`group w-30 ${colors[color]} mx-5 mb-5 p-5 rounded-r-lg rounded-l-xs relative shadow-[5px_5px_0px_rgba(231,226,223,0.8)]`}
       >
         {" "}
         {/*figure out color issue */}
