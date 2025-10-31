@@ -68,7 +68,7 @@ export default function Book({
   return (
     <>
       <div
-        className={`group w-30 ${colors[color]} mx-5 mb-5 p-5 rounded-r-lg rounded-l-xs relative shadow-[5px_5px_0px_rgba(231,226,223,0.8)]`}
+        className={`group w-30 ${colors[color]} mx-5 mb-5 p-5 rounded-r-lg rounded-l-xs relative shadow-[5px_5px_0px_rgba(231,226,223,0.8)] transition delay-50 duration-200 ease-in-out hover:-translate-y-1 hover:scale-105`}
       >
         {" "}
         {/*figure out color issue */}
