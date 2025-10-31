@@ -52,6 +52,19 @@ export default function Book({
     pink: "bg-pink-200",
   };
 
+    const colors_btn: Options = {
+    default: "hover:bg-stone-300",
+    red: "hover:bg-red-300",
+    orange: "hover:bg-orange-300",
+    yellow: "hover:bg-yellow-300",
+    green: "hover:bg-green-300",
+    blue: "hover:bg-blue-300",
+    indigo: "hover:bg-indigo-300",
+    violet: "hover:bg-violet-300",
+    turquoise: "hover:bg-teal-300",
+    pink: "hover:bg-pink-300",
+  };
+
   const colors_text: Options = {
     default: "text-stone-600",
     red: "text-red-600",
@@ -72,9 +85,9 @@ export default function Book({
       >
         {" "}
         {/*figure out color issue */}
-        <div className="w-fit hidden group-hover:flex group-active:flex absolute top-0.5">
-          <BookActionButton modalID={`edit_book_modal_${bookID}`} />
-          <BookActionButton modalID={`delete_book_modal_${bookID}`} />
+        <div className="w-fit hidden group-hover:flex group-active:flex absolute top-0.5 justify-between">
+          <BookActionButton modalID={`edit_book_modal_${bookID}`} color={colors_btn[color]} />
+          <BookActionButton modalID={`delete_book_modal_${bookID}`} color={colors_btn[color]} />
         </div>
         <Link href={link ? link : "/"}>
           <img src={icons[icon]} className="w-fit m-2"></img>

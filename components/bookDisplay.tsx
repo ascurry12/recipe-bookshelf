@@ -12,6 +12,8 @@ export default function BookDisplay({ bookshelfData, bookData }: Props) {
   const [search, setSearch] = useState("");
   const [filtered, setFiltered] = useState<any[]>([]);
 
+  console.log("HELLO", bookData, bookshelfData.data.id)
+
   useEffect(() => {
     if (!bookData) {
       setFiltered([]);
@@ -63,7 +65,7 @@ export default function BookDisplay({ bookshelfData, bookData }: Props) {
                 color={book.color}
                 title={book.title}
                 icon={book.icon}
-                link={`${bookshelfData.id}/book/${book.id}`}
+                link={`/bookshelf/${bookshelfData.data.id}/book/${book.id}`}
               />
             );
           })
@@ -78,7 +80,7 @@ export default function BookDisplay({ bookshelfData, bookData }: Props) {
                 color={book.color}
                 title={book.title}
                 icon={book.icon}
-                link={`${bookshelfData.id}/book/${book.id}`}
+                link={`${bookshelfData.data.id}/book/${book.id}`}
               />
             );
           })

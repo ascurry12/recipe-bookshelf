@@ -10,5 +10,5 @@ interface PageProps {
 
 export default async function Book({ params }: PageProps) {
     const { book_id } = await params;
-    return (<>Hi</>);
+    return (<>Hi {book_id}</>);
 }

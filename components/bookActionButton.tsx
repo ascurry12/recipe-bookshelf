@@ -4,12 +4,13 @@ import React, { ReactNode } from "react";
 
 interface Props {
   modalID: string;
+  color: string;
 }
 
-export default function BookActionButton({modalID}: Props) {
+export default function BookActionButton({modalID, color}: Props) {
   return (
     <button
-      className="btn btn-xs"
+      className={`btn btn-ghost border-transparent btn-xs ${color}`}
       onClick={() => {
         const bookActionModal = document.getElementById(
           modalID
