@@ -17,13 +17,12 @@ export default async function BookPage({ params }: PageProps) {
   const book = await getBook(book_id);
   const recipes = await getRecipes(book_id);
   const recipeData = recipes.data;
-  console.log(recipes);
 
   return (
     <>
       <Link
         href={`/bookshelf/${id}`}
-        className="hover:bg-black rounded-full justify-start w-xs"
+        className="hover:bg-black/20 rounded-full w-fit inline-block m-5"
       >
         <img
           src="/images/circle-arrow-left-solid-full.svg"

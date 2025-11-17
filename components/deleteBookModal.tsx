@@ -8,7 +8,7 @@ interface Props {
   title: string;
 }
 
-export default function DeleteModal({ bookID, title }: Props) {
+export default function DeleteBookModal({ bookID, title }: Props) {
   return (
     <dialog
       id={`delete_book_modal_${bookID}`}

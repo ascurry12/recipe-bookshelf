@@ -44,6 +44,56 @@ export async function addRecipe(bookID: string) {
   );
 }
 
+export async function editRecipe(recipeID: string, formData: FormData) {
+  const recipe = await getRecipe(recipeID);
+
+  const supabase = await createClient();
+
+  // TO-DO
+
+  const data = {
+    title: formData.get("title") as string,
+    color: formData.get("color") as string,
+    icon: formData.get("icon") as string,
+  };
+
+  const { error } = await supabase
+    .from("recipe-pages")
+    .update({})
+    .eq("id", recipeID);
+
+  if (error) {
+    console.log(error);
+    redirect("/error");
+  }
+
+  revalidatePath(`/bookshelf/${recipe.data.bookshelf_id}`);
+
+  redirect(`/bookshelf/${recipe.data.bookshelf_id}`);
+}
+
+export async function deleteRecipe(formData: FormData) {
+  const recipeID = formData.get("recipeID") as string;
+
+  const recipe = await getRecipe(recipeID);
+  const bookshelf = recipe.data.bookshelf_id;
+  const book = recipe.data.book_id;
+
+  const supabase = await createClient();
+  const { error } = await supabase
+    .from("recipe-pages")
+    .delete()
+    .eq("id", recipeID);
+
+  if (error) {
+    console.log(error);
+    redirect("/error");
+  }
+
+  revalidatePath(`/bookshelf/${bookshelf}/book/${book}`);
+  redirect(`/bookshelf/${bookshelf}/book/${book}`);
+}
+
 export async function getNewRecipe(bookID: string) {
   const supabase = await createClient();
   const user = await supabase.auth.getUser();
@@ -65,7 +115,7 @@ export async function getRecipe(recipeID: string) {
     .from("recipe-pages")
     .select()
     .eq("id", recipeID)
-    .single()
+    .single();
 
   return recipe;
 }
@@ -76,8 +126,7 @@ export async function getRecipes(bookID: string) {
   const recipes = await supabase
     .from("recipe-pages")
     .select()
-    .eq("book_id", bookID)
+    .eq("book_id", bookID);
 
   return recipes;
 }
-

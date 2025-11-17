@@ -1,6 +1,7 @@
 "use client";
 
 import React, { ReactNode } from "react";
+import { BiPlus } from "react-icons/bi";
 
 export default function AddBookButton() {
   return (
@@ -13,7 +14,7 @@ export default function AddBookButton() {
         addBookModal.showModal();
       }}
     >
-      + Create new book
+      <BiPlus />Create new book
     </button>
   );
 }

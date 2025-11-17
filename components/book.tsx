@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import BookActionButton from "./bookActionButton";
 import { deleteBook, getBook } from "@/app/(no-navbar)/bookshelf/[id]/actions";
 import Link from "next/link";
-import DeleteModal from "./deleteModal";
+import DeleteBookModal from "./deleteBookModal";
 import EditModal from "./editModal";
 
 interface Props {
@@ -96,7 +96,7 @@ export default function Book({
       </div>
 
       <EditModal bookID={bookID} title={title} color={color} icon={icon} />
-      <DeleteModal bookID={bookID} title={title} />
+      <DeleteBookModal bookID={bookID} title={title} />
     </>
   );
 }
