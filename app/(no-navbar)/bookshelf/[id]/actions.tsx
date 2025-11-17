@@ -46,7 +46,6 @@ export async function editBook(bookID: string, formData: FormData) {
     icon: formData.get("icon") as string,
   };
 
-  // TO-DO: supabase edit logic
   const { error } = await supabase
     .from("books")
     .update({

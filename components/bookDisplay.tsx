@@ -12,8 +12,6 @@ export default function BookDisplay({ bookshelfData, bookData }: Props) {
   const [search, setSearch] = useState("");
   const [filtered, setFiltered] = useState<any[]>([]);
 
-  console.log("HELLO", bookData, bookshelfData.data.id)
-
   useEffect(() => {
     if (!bookData) {
       setFiltered([]);

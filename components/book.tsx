@@ -24,7 +24,7 @@ export default function Book({
   link,
   bookID,
 }: Props) {
-  console.log(title);
+  // console.log(title);
 
   const icons: Options = {
     book: "/images/icons/book-solid-full.svg",

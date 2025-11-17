@@ -36,9 +36,9 @@ export default async function Bookshelf({ params }: PageProps) {
           {/* Page content here */}
           <label
             htmlFor="my-drawer-3"
-            className="btn drawer-button lg:hidden mb-10"
+            className="btn btn-secondary drawer-button lg:hidden mb-10"
           >
-            Open drawer
+            Dashboard
           </label>
           <BookDisplay
             bookData={bookshelfBooks.data}

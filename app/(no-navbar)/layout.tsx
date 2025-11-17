@@ -28,8 +28,19 @@ export default async function RootLayout({
     data: { user },
   } = await supabase.auth.getUser();
 
+  const API_KEY = process.env.NEXT_PUBLIC_TINY_MCE_KEY!;
+
   return (
     <html lang="en" data-theme="cupcake">
+      <head>
+        <script
+          src={`https://cdn.tiny.cloud/1/${API_KEY}/tinymce/8/tinymce.min.js`}
+          referrerPolicy="origin"
+          crossOrigin="anonymous"
+        ></script>
+        <script type="text/javascript">
+  </script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
