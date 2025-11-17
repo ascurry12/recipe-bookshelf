@@ -18,20 +18,25 @@ export default function DeleteRecipeModal({ recipeID, title }: Props) {
         <h3 className="font-bold text-lg">
           Are you sure you want to delete '{title} {recipeID}'?
         </h3>
-        <div className="modal-action">
-          <form action={deleteRecipe} className="flex m-auto">
+        <div className="modal-action flex justify-evenly">
+          <button
+            type="button"
+            className="btn btn-neutral"
+            onClick={() => {
+              const dialog = document.getElementById(
+                `delete_recipe_modal_${recipeID}`
+              ) as HTMLDialogElement;
+              dialog.close();
+            }}
+          >
+            Cancel
+          </button>
+
+          <form action={deleteRecipe} className="inline">
             <input type="hidden" name="recipeID" value={recipeID} />
-            <fieldset className="fieldset bg-base-100 w-xs p-2">
-              {/* if there is a button in form, it will close the modal */}
-              <div className="flex items-center justify-evenly">
-                <button className="btn btn-neutral" formMethod="dialog">
-                  Cancel
-                </button>
-                <button type="submit" className="btn btn-error">
-                  Delete
-                </button>
-              </div>
-            </fieldset>
+            <button type="submit" className="btn btn-error">
+              Delete
+            </button>
           </form>
         </div>
       </div>
